@@ -38,11 +38,11 @@ output "cloudwatch_log_groups" {
 
 output "iam_role_name" {
   description = "The name of the IAM role"
-  value       = aws_iam_role.grafana[0].name
+  value       = try(aws_iam_role.grafana[0].name, null)
 }
 
 output "iam_role_arn" {
   description = "The ARN of the IAM role"
-  value       = aws_iam_role.grafana[0].arn
+  value       = try(aws_iam_role.grafana[0].arn, null)
 }
 
