@@ -60,7 +60,7 @@ The ```terraform-aws-axetrading-monitoring``` module is a Terraform module that 
 | <a name="input_organization_role_name"></a> [organization\_role\_name](#input\_organization\_role\_name) | The role name that the workspace uses to access resources through Amazon Organizations. | `string` | `null` | no |
 | <a name="input_organizational_units"></a> [organizational\_units](#input\_organizational\_units) | The Amazon Organizations organizational units that the workspace is authorized to use data sources from | `list(string)` | `[]` | no |
 | <a name="input_permission_type"></a> [permission\_type](#input\_permission\_type) | The permission type of the workspace.<br>  If SERVICE\_MANAGED is specified, the IAM roles and IAM policy attachments are generated automatically. <br>  If CUSTOMER\_MANAGED is specified, the IAM roles and IAM policy attachments will not be created. | `string` | `"CUSTOMER_MANAGED"` | no |
-| <a name="input_policy_name_prefix"></a> [policy\_name\_prefix](#input\_policy\_name\_prefix) | IAM policy name prefix | `string` | `"eks-policy"` | no |
+| <a name="input_policy_name_prefix"></a> [policy\_name\_prefix](#input\_policy\_name\_prefix) | IAM policy name prefix | `string` | `"grafana-policy-"` | no |
 | <a name="input_prometheus_workspaces"></a> [prometheus\_workspaces](#input\_prometheus\_workspaces) | A list of Prometheus workspaces | `list(string)` | `null` | no |
 | <a name="input_retention_in_days"></a> [retention\_in\_days](#input\_retention\_in\_days) | Specifies the number of days you want to retain log events | `number` | `14` | no |
 | <a name="input_role_associations"></a> [role\_associations](#input\_role\_associations) | Provides an Amazon Managed Grafana workspace role association resource. | `any` | `{}` | no |
@@ -77,4 +77,16 @@ The ```terraform-aws-axetrading-monitoring``` module is a Terraform module that 
 | <a name="input_vpc_configuration"></a> [vpc\_configuration](#input\_vpc\_configuration) | The configuration settings for an Amazon VPC that contains data sources for your Grafana workspace to connect to | `any` | `{}` | no |
 | <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | ID of the VPC where to create security group | `string` | `null` | no |
 | <a name="input_workspace_api_keys"></a> [workspace\_api\_keys](#input\_workspace\_api\_keys) | Provides an Amazon Managed Grafana workspace API Key resource. | `any` | `{}` | no |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| <a name="output_cloudwatch_log_groups"></a> [cloudwatch\_log\_groups](#output\_cloudwatch\_log\_groups) | CloudWatch Log Groups details |
+| <a name="output_grafana_arn"></a> [grafana\_arn](#output\_grafana\_arn) | The ARN of the Grafana Workspace |
+| <a name="output_grafana_endpoint"></a> [grafana\_endpoint](#output\_grafana\_endpoint) | The endpoint of the Grafana Workspace |
+| <a name="output_grafana_version"></a> [grafana\_version](#output\_grafana\_version) | The version of the Grafana Workspace |
+| <a name="output_iam_role_arn"></a> [iam\_role\_arn](#output\_iam\_role\_arn) | The ARN of the IAM role |
+| <a name="output_iam_role_name"></a> [iam\_role\_name](#output\_iam\_role\_name) | The name of the IAM role |
+| <a name="output_prometheus_workspaces"></a> [prometheus\_workspaces](#output\_prometheus\_workspaces) | Prometheus Workspaces details |
 <!-- END_TF_DOCS -->

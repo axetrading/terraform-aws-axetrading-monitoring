@@ -39,7 +39,7 @@ variable "role_name_prefix" {
 variable "policy_name_prefix" {
   description = "IAM policy name prefix"
   type        = string
-  default     = "eks-policy"
+  default     = "grafana-policy-"
 }
 
 variable "force_detach_policies" {
