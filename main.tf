@@ -15,6 +15,7 @@ resource "aws_grafana_workspace" "grafana" {
   organization_role_name    = var.organization_role_name
   organizational_units      = var.organizational_units
   role_arn                  = var.create_role ? aws_iam_role.grafana[0].arn : null
+  stack_set_name            = var.name
 
   dynamic "vpc_configuration" {
     for_each = length(var.vpc_configuration) > 0 ? [var.vpc_configuration] : []
