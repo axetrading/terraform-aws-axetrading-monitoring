@@ -3,7 +3,7 @@
 variable "create_role" {
   type        = bool
   description = "Whether to create or not the IAM Role for the AWS Managed Grafana Workspace"
-  default     = false
+  default     = true
 }
 
 variable "iam_role_arn" {

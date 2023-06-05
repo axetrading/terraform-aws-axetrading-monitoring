@@ -62,7 +62,7 @@ The ```terraform-aws-axetrading-monitoring``` module is a Terraform module that 
 | <a name="input_authentication_providers"></a> [authentication\_providers](#input\_authentication\_providers) | Specifies whether this workspace uses SAML 2.0, Amazon Web Services SSO, <br>  or both to authenticate users for using the Grafana console within a workspace. | `list(string)` | <pre>[<br>  "AWS_SSO"<br>]</pre> | no |
 | <a name="input_configuration"></a> [configuration](#input\_configuration) | The configuration string for the workspace that you create. For more information about the format and configuration options available, see Working in your Grafana workspace | `string` | `null` | no |
 | <a name="input_create_grafana_workspace"></a> [create\_grafana\_workspace](#input\_create\_grafana\_workspace) | Whether to create or not the AWS Managed Grafana Workspace | `bool` | `true` | no |
-| <a name="input_create_role"></a> [create\_role](#input\_create\_role) | Whether to create or not the IAM Role for the AWS Managed Grafana Workspace | `bool` | `false` | no |
+| <a name="input_create_role"></a> [create\_role](#input\_create\_role) | Whether to create or not the IAM Role for the AWS Managed Grafana Workspace | `bool` | `true` | no |
 | <a name="input_create_security_group"></a> [create\_security\_group](#input\_create\_security\_group) | Whether to create a security group for Grafana | `bool` | `true` | no |
 | <a name="input_description"></a> [description](#input\_description) | The description of the AWS Managed Grafana Workspace | `string` | `"AWS Managed Grafana Workspace"` | no |
 | <a name="input_enable_logging"></a> [enable\_logging](#input\_enable\_logging) | Enable logging | `bool` | `false` | no |
