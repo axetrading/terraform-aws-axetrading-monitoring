@@ -5,7 +5,7 @@ locals {
 }
 
 resource "aws_iam_role" "grafana" {
-  count       = var.create_role && var.permission_type == "CUSTOMER_MANAGED" ? 1 : 0
+  count       = var.create_role ? 1 : 0
   name        = local.grafana_role_name
   name_prefix = module.short-name[0].result
   path        = var.role_path
