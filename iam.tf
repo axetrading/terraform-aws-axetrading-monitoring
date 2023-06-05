@@ -1,11 +1,11 @@
 locals {
   grafana_role_name   = var.role_name != null ? format("%s-%s", var.role_name, "grafana") : null
-  grafana_role_prefix = var.role_name_prefix != null ? format("%s-%s", var.role_name_prefix, "grafana") : null
+  grafana_role_prefix = var.role_name_prefix != null && var.permission_type == "CUSTOMER_MANAGED" ? format("%s-%s", var.role_name_prefix, "grafana") : null
   create_policies     = var.permission_type == "CUSTOMER_MANAGED" && var.account_access_type == "CURRENT_ACCOUNT"
 }
 
 resource "aws_iam_role" "grafana" {
-  count       = var.create_role ? 1 : 0
+  count       = var.create_role && var.permission_type == "CUSTOMER_MANAGED" ? 1 : 0
   name        = local.grafana_role_name
   name_prefix = module.short-name[0].result
   path        = var.role_path
