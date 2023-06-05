@@ -7,7 +7,7 @@ resource "aws_prometheus_workspace" "prometheus" {
   dynamic "logging_configuration" {
     for_each = var.enable_logging ? [1] : []
     content {
-      log_group_arn = aws_cloudwatch_log_group.prometheus[each.key].arn
+      log_group_arn = "${aws_cloudwatch_log_group.prometheus[each.key].arn}:*"
     }
   }
 
@@ -17,7 +17,7 @@ resource "aws_prometheus_workspace" "prometheus" {
 resource "aws_cloudwatch_log_group" "prometheus" {
   for_each = var.enable_logging ? { for workspace in var.prometheus_workspaces : workspace => workspace } : {}
 
-  name              = "prometheus_logging_${each.key}"
+  name              = "prometheus-logging-${each.key}"
   retention_in_days = var.retention_in_days
 
   tags = merge({ "LogGroupName" = each.value }, var.tags)

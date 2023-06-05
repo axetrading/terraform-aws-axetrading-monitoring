@@ -1,5 +1,7 @@
 data "aws_partition" "current" {}
 
+data "aws_caller_identity" "current" {}
+
 data "aws_iam_policy_document" "grafana_assume_role" {
   count = var.create_role ? 1 : 0
 
@@ -31,3 +33,86 @@ data "aws_iam_policy_document" "prometheus" {
     ]
   }
 }
+
+data "aws_iam_policy_document" "cloudwatch_logs" {
+  count = contains(var.grafana_data_sources, "CLOUDWATCH") ? 1 : 0
+
+  statement {
+    sid    = "CloudWatchLogs"
+    effect = "Allow"
+    actions = [
+      "logs:DescribeLogGroups",
+      "logs:GetLogGroupFields",
+      "logs:StartQuery",
+      "logs:StopQuery",
+      "logs:GetQueryResults",
+      "logs:GetLogEvents",
+    ]
+    resources = ["*"]
+  }
+}
+
+data "aws_iam_policy_document" "cloudwatch_metrics" {
+  count = contains(var.grafana_data_sources, "CLOUDWATCH") ? 1 : 0
+
+  statement {
+    sid    = "CloudWatchMetrics"
+    effect = "Allow"
+    actions = [
+      "cloudwatch:DescribeAlarmsForMetric",
+      "cloudwatch:DescribeAlarmHistory",
+      "cloudwatch:DescribeAlarms",
+      "cloudwatch:ListMetrics",
+      "cloudwatch:GetMetricStatistics",
+      "cloudwatch:GetMetricData",
+    ]
+    resources = ["*"]
+  }
+
+}
+
+data "aws_iam_policy_document" "ec2" {
+  count = contains(var.grafana_data_sources, "CLOUDWATCH") ? 1 : 0
+
+  statement {
+    sid    = "EC2"
+    effect = "Allow"
+    actions = [
+      "ec2:DescribeTags",
+      "ec2:DescribeInstances",
+      "ec2:DescribeRegions",
+    ]
+    resources = ["*"]
+  }
+}
+
+data "aws_iam_policy_document" "tags" {
+  count = contains(var.grafana_data_sources, "CLOUDWATCH") ? 1 : 0
+
+  statement {
+    sid    = "Tags"
+    effect = "Allow"
+    actions = [
+      "tag:GetResources",
+    ]
+    resources = ["*"]
+  }
+}
+
+data "aws_iam_policy_document" "sns" {
+  count = contains(var.notification_destinations, "SNS") ? 1 : 0
+
+  statement {
+    sid    = "SNS"
+    effect = "Allow"
+    actions = [
+      "sns:Publish",
+    ]
+    resources = [
+      "arn:${data.aws_partition.current.partition}:sns:*:${data.aws_caller_identity.current.account_id}:grafana*"
+    ]
+  }
+}
+
+
+
