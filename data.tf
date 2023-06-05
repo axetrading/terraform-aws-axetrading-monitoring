@@ -31,6 +31,7 @@ data "aws_iam_policy_document" "prometheus" {
       "aps:GetSeries",
       "aps:GetMetricMetadata",
     ]
+    resources = [ "*" ]
   }
 }
 
