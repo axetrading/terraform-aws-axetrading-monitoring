@@ -1,6 +1,6 @@
 locals {
   grafana_role_name   = var.role_name != null ? format("%s-%s", var.role_name, "grafana") : null
-  grafana_role_prefix = var.role_name_prefix != null && var.permission_type == "CUSTOMER_MANAGED" ? format("%s-%s", var.role_name_prefix, "grafana") : null
+  grafana_role_prefix = var.role_name_prefix != null ? format("%s-%s", var.role_name_prefix, "grafana") : null
   create_policies     = var.permission_type == "CUSTOMER_MANAGED" && var.account_access_type == "CURRENT_ACCOUNT"
 }
 
