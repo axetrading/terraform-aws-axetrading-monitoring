@@ -19,10 +19,10 @@ output "grafana_version" {
 output "prometheus_workspaces" {
   description = "Prometheus Workspaces details"
   value = { for k, ws in aws_prometheus_workspace.prometheus : k => {
-    alias    = ws.arn
-    id       = ws.id
-    tags     = ws.tags
-    endpoint = ws.endpoint
+    alias               = ws.arn
+    id                  = ws.id
+    tags                = ws.tags
+    prometheus_endpoint = ws.prometheus_endpoint
   } }
 }
 
