@@ -115,10 +115,6 @@ variable "authentication_providers" {
   or both to authenticate users for using the Grafana console within a workspace.
   EOF
   default     = ["AWS_SSO"]
-  validation {
-    condition     = can(regex("^(AWS_SSO|SAML)$", var.authentication_providers))
-    error_message = "authentication_providers must be AWS_SSO or SAML."
-  }
 }
 
 variable "configuration" {
@@ -130,7 +126,7 @@ variable "configuration" {
 variable "grafana_data_sources" {
   description = "A list of data sources that should be configured in AWS Managed Grafana Workspace"
   type        = list(string)
-  default     = ["CLOUDWATCH", "PROMETHEUS"]
+  default     = []
 }
 
 variable "grafana_version" {
