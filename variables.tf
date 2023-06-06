@@ -174,9 +174,9 @@ variable "workspace_api_keys" {
 }
 
 variable "stack_set_name" {
-  type = string
+  type        = string
   description = "The name of the stack set to create"
-  default = null
+  default     = null
 }
 
 
