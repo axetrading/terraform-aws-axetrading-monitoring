@@ -208,9 +208,21 @@ variable "security_group_rules" {
 
 ### ======== PROMETHEUS VARIABLES ========###
 
+variable "create_prometheus_role" {
+  type        = bool
+  description = "Whether to create or not the IAM role that grants permissions to the Prometheus workspace"
+  default     = true
+}
+
 variable "prometheus_workspaces" {
   description = "A list of Prometheus workspaces"
   type        = list(string)
+  default     = null
+}
+
+variable "prometheus_role_name" {
+  type        = string
+  description = "The name of the IAM role that grants permissions to the Prometheus workspace"
   default     = null
 }
 
@@ -247,4 +259,9 @@ variable "tags" {
   default     = {}
 }
 
+variable "org_id" {
+  description = "The ID of the AWS Organization"
+  type        = string
+  default     = null
+}
 

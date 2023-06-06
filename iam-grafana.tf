@@ -4,6 +4,20 @@ locals {
   create_policies     = var.permission_type == "CUSTOMER_MANAGED"
 }
 
+data "aws_iam_policy_document" "grafana_assume_role" {
+  count = var.create_role ? 1 : 0
+
+  statement {
+    sid     = "GrafanaAssume"
+    effect  = "Allow"
+    actions = ["sts:AssumeRole"]
+
+    principals {
+      type        = "Service"
+      identifiers = ["grafana.${data.aws_partition.current.dns_suffix}"]
+    }
+  }
+}
 resource "aws_iam_role" "grafana" {
   count       = var.create_role ? 1 : 0
   name        = local.grafana_role_name

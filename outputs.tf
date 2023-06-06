@@ -36,13 +36,22 @@ output "cloudwatch_log_groups" {
 
 ###======= IAM OUTPUTS =======###
 
-output "iam_role_name" {
+output "grafana_iam_role_name" {
   description = "The name of the IAM role"
   value       = try(aws_iam_role.grafana[0].name, null)
 }
 
-output "iam_role_arn" {
+output "grafana_iam_role_arn" {
   description = "The ARN of the IAM role"
   value       = try(aws_iam_role.grafana[0].arn, null)
 }
 
+output "prometheus_iam_role_name" {
+  description = "The name of the IAM role"
+  value       = try(aws_iam_role.prometheus[0].name, null)
+}
+
+output "prometheus_iam_role_arn" {
+  description = "The ARN of the IAM role"
+  value       = try(aws_iam_role.prometheus[0].arn, null)
+}
