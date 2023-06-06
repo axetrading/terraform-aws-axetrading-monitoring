@@ -5,7 +5,7 @@ data "aws_iam_policy_document" "prometheus_assume_role" {
     effect = "Allow"
     principals {
       type        = "AWS"
-      identifiers = ["arn:aws:iam::*:role/amp-iamproxy-ingest-role*"]
+      identifiers = ["*"]
     }
     actions = ["sts:AssumeRole"]
 
