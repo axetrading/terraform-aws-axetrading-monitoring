@@ -90,6 +90,7 @@ The ```terraform-aws-axetrading-monitoring``` module is a Terraform module that 
 | <a name="input_security_group_ids"></a> [security\_group\_ids](#input\_security\_group\_ids) | A list of security group ids that should be attached to AWS Managed Grafana Workspace | `list(string)` | `null` | no |
 | <a name="input_security_group_name"></a> [security\_group\_name](#input\_security\_group\_name) | AWS Managed Grafana Security Group Name | `string` | `""` | no |
 | <a name="input_security_group_rules"></a> [security\_group\_rules](#input\_security\_group\_rules) | Security Group rules that will be added to the security group created | `map(any)` | `{}` | no |
+| <a name="input_stack_set_name"></a> [stack\_set\_name](#input\_stack\_set\_name) | The name of the stack set to create | `string` | `null` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | A map of tags to add the the IAM role | `map(any)` | `{}` | no |
 | <a name="input_vpc_configuration"></a> [vpc\_configuration](#input\_vpc\_configuration) | The configuration settings for an Amazon VPC that contains data sources for your Grafana workspace to connect to | `any` | `{}` | no |
 | <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | ID of the VPC where to create security group | `string` | `null` | no |

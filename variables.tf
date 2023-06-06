@@ -173,6 +173,12 @@ variable "workspace_api_keys" {
   default     = {}
 }
 
+variable "stack_set_name" {
+  type = string
+  description = "The name of the stack set to create"
+  default = null
+}
+
 
 ### ======== SECURITY GROUP VARIABLES ========###
 
@@ -240,4 +246,5 @@ variable "tags" {
   type        = map(any)
   default     = {}
 }
+
 
