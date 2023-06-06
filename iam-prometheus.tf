@@ -1,4 +1,5 @@
 data "aws_iam_policy_document" "prometheus_assume_role" {
+  count = var.create_prometheus_role ? 1 : 0
   statement {
     sid    = "AllowAssumeRole"
     effect = "Allow"
