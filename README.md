@@ -12,7 +12,7 @@ The ```terraform-aws-axetrading-monitoring``` module is a Terraform module that 
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.1.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | ~> 5.0 |
 
 ## Modules
 

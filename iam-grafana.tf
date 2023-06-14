@@ -117,7 +117,7 @@ resource "aws_iam_role_policy_attachment" "sns" {
 
 
 resource "aws_iam_policy" "cross_account" {
-  count = var.cross_account_enabled && local.create_policies ? 1 : 0
+  count       = var.cross_account_enabled && local.create_policies ? 1 : 0
   name_prefix = "grafana-cloudwatch-cross-account-"
   path        = var.role_path
   policy      = data.aws_iam_policy_document.cross_account[0].json
