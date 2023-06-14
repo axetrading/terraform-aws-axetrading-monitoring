@@ -116,6 +116,18 @@ resource "aws_iam_role_policy_attachment" "sns" {
 }
 
 
+resource "aws_iam_policy" "cross_account" {
+  count = var.cross_account_enabled && local.create_policies ? 1 : 0
+  name_prefix = "grafana-cloudwatch-cross-account-"
+  path        = var.role_path
+  policy      = data.aws_iam_policy_document.cross_account[0].json
+}
+
+resource "aws_iam_role_policy_attachment" "cross_account" {
+  count      = var.cross_account_enabled && local.create_policies ? 1 : 0
+  role       = aws_iam_role.grafana[0].name
+  policy_arn = aws_iam_policy.cross_account[0].arn
+}
 
 module "short-name" {
   count      = local.grafana_role_prefix != null ? 1 : 0

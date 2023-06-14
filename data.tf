@@ -100,5 +100,26 @@ data "aws_iam_policy_document" "sns" {
   }
 }
 
+data "aws_iam_policy_document" "cross_account" {
+  count = var.cross_account_enabled ? 1 : 0
 
+  statement {
+    sid    = "CrossAccount"
+    effect = "Allow"
+    actions = [
+      "sts:AssumeRole",
+    ]
+    resources = [
+      "arn:aws:iam::*:role/amp-iamproxy-ingest-role*",
+    ]
 
+    dynamic "condition" {
+      for_each = var.org_id != null ? [1] : []
+      content {
+        test     = "StringEquals"
+        variable = "aws:PrincipalOrgID"
+        values   = [var.org_id]
+      }
+    }
+  }
+}

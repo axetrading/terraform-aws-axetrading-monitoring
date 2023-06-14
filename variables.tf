@@ -265,3 +265,8 @@ variable "org_id" {
   default     = null
 }
 
+variable "cross_account_enabled" {
+  description = "Whether to enable cross account CloudWatch ingestion or not"
+  type        = bool
+  default     = false
+}
