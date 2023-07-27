@@ -127,7 +127,7 @@ data "aws_iam_policy_document" "cross_account" {
     content {
 
 
-      sid    = "CrossAccount"
+      sid    = "GrafanaCloudwatchExporter"
       effect = "Allow"
       actions = [
         "sts:AssumeRole",
