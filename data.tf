@@ -122,4 +122,26 @@ data "aws_iam_policy_document" "cross_account" {
       }
     }
   }
+  dynamic "statement" {
+    for_each = var.grafana_cloudwatch_exporter_role_arns != null ? [1] : []
+    content {
+
+
+      sid    = "CrossAccount"
+      effect = "Allow"
+      actions = [
+        "sts:AssumeRole",
+      ]
+      resources = var.grafana_cloudwatch_exporter_role_arns
+
+      dynamic "condition" {
+        for_each = var.org_id != null ? [1] : []
+        content {
+          test     = "StringEquals"
+          variable = "aws:PrincipalOrgID"
+          values   = [var.org_id]
+        }
+      }
+    }
+  }
 }

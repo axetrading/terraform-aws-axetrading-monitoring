@@ -65,6 +65,12 @@ variable "role_policy_arns" {
   type        = set(string)
   default     = []
 }
+
+variable "grafana_cloudwatch_exporter_role_arns" {
+  description = "ARNs of any roles to attach to the IAM role"
+  type        = set(string)
+  default     = null
+}
 ### ======== GRAFANA VARIABLES ========###
 
 variable "name" {
