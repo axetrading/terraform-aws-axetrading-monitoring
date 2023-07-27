@@ -76,6 +76,7 @@ The ```terraform-aws-axetrading-monitoring``` module is a Terraform module that 
 | <a name="input_enable_logging"></a> [enable\_logging](#input\_enable\_logging) | Enable logging | `bool` | `false` | no |
 | <a name="input_enabled"></a> [enabled](#input\_enabled) | Whether to enable or not the module | `bool` | `true` | no |
 | <a name="input_force_detach_policies"></a> [force\_detach\_policies](#input\_force\_detach\_policies) | Whether policies should be detached from this role when destroying | `bool` | `true` | no |
+| <a name="input_grafana_cloudwatch_exporter_role_arns"></a> [grafana\_cloudwatch\_exporter\_role\_arns](#input\_grafana\_cloudwatch\_exporter\_role\_arns) | ARNs of any roles to attach to the IAM role | `set(string)` | `null` | no |
 | <a name="input_grafana_data_sources"></a> [grafana\_data\_sources](#input\_grafana\_data\_sources) | A list of data sources that should be configured in AWS Managed Grafana Workspace | `list(string)` | `[]` | no |
 | <a name="input_grafana_version"></a> [grafana\_version](#input\_grafana\_version) | The version of Grafana to use | `string` | `"9.4"` | no |
 | <a name="input_iam_role_arn"></a> [iam\_role\_arn](#input\_iam\_role\_arn) | Existing IAM role ARN for the workspace. Required if `create_iam_role` is set to `false` | `string` | `null` | no |
