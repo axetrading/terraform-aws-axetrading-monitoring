@@ -131,8 +131,7 @@ resource "aws_iam_role_policy_attachment" "cross_account" {
 
 module "short-name" {
   count      = local.grafana_role_prefix != null ? 1 : 0
-  source     = "axetrading/short-name/null"
-  version    = "1.0.0"
+  source     = "git@github.com:axetrading/terraform-null-short-name.git?ref=v1.0.0"
   max_length = 38
   value      = local.grafana_role_prefix
 }
